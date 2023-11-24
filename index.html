@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chocolates Bundle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1>Add Your Chocolates </h1>
+  
+  <form id="formChocolate" class="container">
+    <!-- Checkboxes for selecting chocolates -->
+    <label><input type="checkbox" name="chocolate" value="Dark Chocolate"> Dark Chocolate - ₹150</label><br>
+    <label><input type="checkbox" name="chocolate" value="Milk Chocolate"> Milk Chocolate - ₹187.50</label><br>
+    <label><input type="checkbox" name="chocolate" value="White Chocolate"> White Chocolate - ₹360</label><br>
+    <label><input type="checkbox" name="chocolate" value="Blonde Chocolate"> Blonde Chocolate - ₹220</label><br>
+    <label><input type="checkbox" name="chocolate" value="Ruby Chocolate"> Ruby  Chocolate - ₹100</label><br>
+    <label><input type="checkbox" name="chocolate" value="Raw Chocolate"> Raw Chocolate - ₹225</label><br>
+    <label><input type="checkbox" name="chocolate" value="Vegan Chocolate"> Vegan Chocolate - ₹200</label><br>
+    <label><input type="checkbox" name="chocolate" value="Gianduja Chocolate"> Gianduja Chocolate - ₹302</label><br>
+    <!-- Input fields for quantities -->
+    <label>Quantity:</label>
+    <input type="number" name="quantity" min="0" max="8" value="0"><br><br>
+    
+    <!-- Display total price -->
+    <label>Total Price:  ₹</label><span id="TotalPrice">Rs 0.00</span>
+  </form>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
