@@ -1,51 +1,30 @@
-const chocolates = {
-  "Dark Chocolate": 150,
-  "Milk Chocolate": 187.50,
-  "White Chocolate": 360,
-  "Blonde Chocolate": 220,
-  "Ruby Chocolate": 100,
-  "Raw Chocolate": 225,
-  "Vegan Chocolate": 200,
-  "Gianduja Chocolate": 302
-  // Add more chocolates and prices as needed
-};
+const carousel = document.getElementById("features");
+      const items = document.querySelector(".carousel-inner-items");
+      const itemCount = document.querySelectorAll(".carousel-item").length;
+      let currentIndex = 0;
 
-const form = document.getElementById('formChocolate');
-const checkboxes = form.querySelectorAll('input[type="checkbox"]');
-const quantityInput = form.querySelector('input[name="quantity"]');
-const totalPriceSpan = document.getElementById('TotalPrice');
+      function showNext() {
+        if (currentIndex < itemCount - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      }
 
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', updateTotal);
-});//This part of the code is responsible for attaching an event listener to each checkbox element on the form
+      function showPrev() {
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = itemCount - 1;
+        }
+        updateCarousel();
+      }
 
-quantityInput.addEventListener('input', updateTotal); //input:The 'input' event occurs when 
-//the value of the input field changes
- //updateTotal : This function is responsible
-// for recalculating the total price based on the selected checkboxes 
+      function updateCarousel() {
+        const newTransformValue = -currentIndex * 100 + "%";
+        items.style.transform = `translateX(${newTransformValue})`;
+      }
 
-function updateTotal() {
-  let total = 0;
-  let count = 0;
-
-  checkboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      const chocolateName = checkbox.value; //value represents the name of the chocolates assigned to that checkbox.
-      const price = chocolates[chocolateName]; //The value assigned to price is the price of the chocolate whose 
-      //name matches the value stored in the chocolateName variable.
-      const quantity = parseInt(quantityInput.value);//parseInt() is a JavaScript function used to parse a string
-      // and convert it into an integer.
-      //parseInt(quantityInput.value) converts the string value entered in the input field into an integer.
-      total += price * quantity;
-      count += quantity;
-    }
-  });
-
-  if (count > 8) {
-    alert("You can't select more than 8 items.");
-    quantityInput.value = 0;
-    total = 0;
-  }
-
-  totalPriceSpan.textContent = total.toFixed(2);
-}
+      // Automatically slide images
+      setInterval(showNext, 4000); // Change the interval time (in milliseconds) as needed
